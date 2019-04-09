@@ -1,21 +1,25 @@
+%global commit 58b3ef471d642bb1b7563a43664d8d0ce6e52a5c
+%global shortcommit %(c=%{commit}; echo ${c:0:7})
+%global date 20190409
+
 %global filename nvidia-pl-90
 
 Name:           nvidia-power-limit
 Version:        1.0
-Release:        1%{?dist}
+Release:        2.%{date}git%{shortcommit}%{?dist}
 
 Summary:        NVIDIA power limit tweak
 
 License:        GPLv3+
 URL:            https://github.com/tim77/nvidia-power-limit
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %{url}/tarball/%{commit}#/%{name}-%{version}.%{shortcommit}.tar.gz
 BuildArch:      noarch
 
 %description
 Systemd startup service for setting power limit on NVIDIA videocards.
 
 %prep
-%autosetup -n %{name}
+%autosetup -n tim77-%{name}-%{shortcommit}
 
 %install
 mkdir   -p      %{buildroot}%{_prefix}/lib/systemd/system/
@@ -36,5 +40,5 @@ systemctl disable nvidia-pl-90.service
 %{_prefix}/lib/systemd/system/%{filename}.service
 
 %changelog
-* Sat Apr 06 2019 Artem Polishchuk <ego.cordatus@gmail.com> - 1.0-1
+* Tue Apr 09 2019 Artem Polishchuk <ego.cordatus@gmail.com> - 1.0-2
 - Initial package.
