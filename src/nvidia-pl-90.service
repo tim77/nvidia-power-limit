@@ -1,0 +1,9 @@
+[Unit]
+Description=NVIDIA power limit tweak
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/nvidia-pl-90.sh
+
+[Install]
+WantedBy=multi-user.target
