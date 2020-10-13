@@ -3,7 +3,7 @@ Description=NVIDIA power limit tweak
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/nvidia-pl-90.sh
+ExecStart=/usr/bin/nvidia-pl.sh
 
 [Install]
 WantedBy=multi-user.target

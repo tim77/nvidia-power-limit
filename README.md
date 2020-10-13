@@ -6,6 +6,6 @@ Systemd startup service for setting power limit on NVIDIA videocards.
 
 ### Set power limit setting
 
-```shell
-sudoedit /usr/bin/nvidia-pl-90.sh
+```sh
+sudoedit /usr/bin/nvidia-pl.sh
 ```
