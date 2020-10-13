@@ -1,4 +1,4 @@
-%global commit 8646c5f296acc49bafe9c9e2ee7147689bef58fd
+%global commit 1d2f0763589658c243460af0ff750bac7231fe5e
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 %global date 20201013
 
@@ -48,10 +48,9 @@ install -Dp src/nvidia-pl.sh -t %{buildroot}%{_bindir}/
 %{_bindir}/%{filename}.sh
 %{_unitdir}/*.service
 
-
 %changelog
-* Tue Oct 13 2020 Artem Polishchuk <ego.cordatus@gmail.com> - 1.0-3.20201013git8646c5f
-- build(update): commit 8646c5f
+* Tue Oct 13 2020 Artem Polishchuk <ego.cordatus@gmail.com> - 1.0-3.20201013git1d2f076
+- build(update): commit 1d2f076
 
 * Tue Apr 09 2019 Artem Polishchuk <ego.cordatus@gmail.com> - 1.0-2
 - Initial package.
