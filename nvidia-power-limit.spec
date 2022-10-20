@@ -1,18 +1,14 @@
-%global commit 1d2f0763589658c243460af0ff750bac7231fe5e
-%global shortcommit %(c=%{commit}; echo ${c:0:7})
-%global date 20201013
-
 %global filename nvidia-pl
 
 Name: nvidia-power-limit
-Version: 1.0
-Release: 3.%{date}git%{shortcommit}%{?dist}
+Version: 1.0.1
+Release: 1%{?dist}
 Summary: NVIDIA power limit tweak
 BuildArch: noarch
 
 License: GPLv3+
 URL: https://github.com/tim77/nvidia-power-limit
-Source0: %{url}/archive/%{commit}/%{name}-%{version}.%{date}git%{shortcommit}.tar.gz
+Source0: %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires: systemd-rpm-macros
 
@@ -20,16 +16,16 @@ BuildRequires: systemd-rpm-macros
 Systemd startup service for setting power limit on NVIDIA videocards.
 
 To enable:
-  systemctl enable --now nvidia-pl.service
+  # systemctl enable --now nvidia-pl.service
 
 
 %prep
-%autosetup -n %{name}-%{commit} -p1
+%autosetup -p1
 
 
 %install
-install -Dp src/nvidia-pl.service -t %{buildroot}%{_prefix}/lib/systemd/system/
-install -Dp src/nvidia-pl.sh -t %{buildroot}%{_bindir}/
+install -Dpm 0644 src/nvidia-pl.service -t %{buildroot}%{_prefix}/lib/systemd/system/
+install -Dpm 0755 src/nvidia-pl.sh -t %{buildroot}%{_bindir}/
 
 
 %post
@@ -48,7 +44,11 @@ install -Dp src/nvidia-pl.sh -t %{buildroot}%{_bindir}/
 %{_bindir}/%{filename}.sh
 %{_unitdir}/*.service
 
+
 %changelog
+* Thu Oct 20 2022 Artem Polishchuk <ego.cordatus@gmail.com> - 1.0.1-1
+- build(update): 1.0.1
+
 * Tue Oct 13 2020 Artem Polishchuk <ego.cordatus@gmail.com> - 1.0-3.20201013git1d2f076
 - build(update): commit 1d2f076
 
