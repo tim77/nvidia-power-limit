@@ -4,7 +4,7 @@ Description=NVIDIA power limit tweak
 [Service]
 Type=simple
 ExecStartPre=/usr/bin/sleep 10
-ExecStart=/usr/bin/nvidia-pl.sh
+ExecStart=/usr/sbin/nvidia-pl.sh
 
 [Install]
 WantedBy=multi-user.target

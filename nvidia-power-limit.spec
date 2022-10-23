@@ -1,7 +1,7 @@
 %global filename nvidia-pl
 
 Name: nvidia-power-limit
-Version: 1.0.1
+Version: 1.0.2
 Release: 1%{?dist}
 Summary: NVIDIA power limit tweak
 BuildArch: noarch
@@ -25,7 +25,7 @@ To enable:
 
 %install
 install -Dpm 0644 src/nvidia-pl.service -t %{buildroot}%{_prefix}/lib/systemd/system/
-install -Dpm 0755 src/nvidia-pl.sh -t %{buildroot}%{_bindir}/
+install -Dpm 0755 src/nvidia-pl.sh -t %{buildroot}%{_sbindir}/
 
 
 %post
@@ -41,11 +41,14 @@ install -Dpm 0755 src/nvidia-pl.sh -t %{buildroot}%{_bindir}/
 %files
 %doc README.md
 %license COPYING
-%{_bindir}/%{filename}.sh
+%{_sbindir}/%{filename}.sh
 %{_unitdir}/*.service
 
 
 %changelog
+* Sun Oct 23 2022 Artem Polishchuk <ego.cordatus@gmail.com> - 1.0.2-1
+- build(update): 1.0.2
+
 * Thu Oct 20 2022 Artem Polishchuk <ego.cordatus@gmail.com> - 1.0.1-1
 - build(update): 1.0.1
 
